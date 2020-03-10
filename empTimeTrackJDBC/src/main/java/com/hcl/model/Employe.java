@@ -1,12 +1,24 @@
 package com.hcl.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Employe {
 
-	  private Long id;
-	  
+	   @NotNull
+	   @NotBlank(message = "Id cannot be blank")
+	   private Long id;
+	   @NotNull
+	   @NotBlank(message = "Emp Id cannot be blank")
 	   private Long eid;
+	   @NotNull
+	   @NotBlank(message = "Ename cannot be blank")
 	   private String ename;
+	   @NotNull
+	   @NotBlank(message = "Designation cannot be blank")
 	   private String designation;
+	   @NotNull
+	   @NotBlank(message = "Location cannot be blank")
 	   private String location;
 	
 	   public Long getId() {

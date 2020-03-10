@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.hcl.exception.RecordsNotFound;
 import com.hcl.model.Employe;
 import com.hcl.model.LoginTimeAudit;
 
@@ -15,7 +16,7 @@ public class JDBCemployeRepository implements EmployeeRepository,LoginAuditRepos
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public int count() {
+	public int count() throws RecordsNotFound {
 		// TODO Auto-generated method stub
 		 return jdbcTemplate
 	                .queryForObject("select count(*) from employee", Integer.class);
@@ -41,7 +42,7 @@ public class JDBCemployeRepository implements EmployeeRepository,LoginAuditRepos
 	 *
 	 */
 	@Override
-	public int auditsave(LoginTimeAudit auditsave) {
+	public int auditsave(LoginTimeAudit auditsave) throws RecordsNotFound {
 		// TODO Auto-generated method stub
 		int count=getempById(auditsave.getEid());
 		if(count !=0) {
